@@ -1,0 +1,16 @@
+---
+- name: Install nginx and vhosts
+  hosts: webservers
+  remote_user: runner
+  become: True
+  become_method: sudo
+  gather_facts: no
+
+  vars:
+    sites:
+      - "etis.com"
+      - "fizmat.ru"
+      - "iknt.it"
+
+  roles:
+  - nginx-vhosts
